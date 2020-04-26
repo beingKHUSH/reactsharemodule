@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/reactsharemodule/static/css/main.e446d31b.chunk.css",
+    "main.js": "/reactsharemodule/static/js/main.9d3ef169.chunk.js",
+    "main.js.map": "/reactsharemodule/static/js/main.9d3ef169.chunk.js.map",
+    "runtime-main.js": "/reactsharemodule/static/js/runtime-main.31ad0731.js",
+    "runtime-main.js.map": "/reactsharemodule/static/js/runtime-main.31ad0731.js.map",
+    "static/js/2.0c87c949.chunk.js": "/reactsharemodule/static/js/2.0c87c949.chunk.js",
+    "static/js/2.0c87c949.chunk.js.map": "/reactsharemodule/static/js/2.0c87c949.chunk.js.map",
+    "index.html": "/reactsharemodule/index.html",
+    "precache-manifest.526c24e1305a6a11d14b1fb8495072f6.js": "/reactsharemodule/precache-manifest.526c24e1305a6a11d14b1fb8495072f6.js",
+    "service-worker.js": "/reactsharemodule/service-worker.js",
+    "static/css/main.e446d31b.chunk.css.map": "/reactsharemodule/static/css/main.e446d31b.chunk.css.map",
+    "static/js/2.0c87c949.chunk.js.LICENSE.txt": "/reactsharemodule/static/js/2.0c87c949.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.31ad0731.js",
+    "static/js/2.0c87c949.chunk.js",
+    "static/css/main.e446d31b.chunk.css",
+    "static/js/main.9d3ef169.chunk.js"
+  ]
+}
