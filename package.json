@@ -32,7 +32,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://github.com/beingKHUSH/reactsharemodule.git/",
+  "homepage": "https://github.com/beingKHUSH/reactsharemodule",
   "devDependencies": {
     "gh-pages": "^2.2.0"
   }
