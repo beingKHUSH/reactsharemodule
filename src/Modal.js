@@ -18,38 +18,45 @@ const Modal = ({ isShowing, hide }) => {
         { "id": 11, "name": "Elda", "email": "elda@example.in", "isMember": false },
         { "id": 12, "name": "Kamron", "email": "kamron@live.in", "isMember": false }
     ];
-    const initialMembers = initialUsers.filter(user => user.isMember === true);
-    const initialNonMembers = initialUsers.filter(user => user.isMember === false);
 
     const [users, setUsers] = useState(initialUsers);
     const [results, setResults] = useState([]);
-    const [members, setMembers] = useState(initialMembers);
-    const [nonMembers, setNonMembers] = useState(initialNonMembers);
+    const [value, setValue] = useState("");
 
     const owner = users.filter(user => user.isOwner === true);
 
     const showSuggestions = (e) => {
+        setValue(e.target.value);
         if (e.target.value === "") {
             setResults([]);
         } else {
+            let nonMembers = users.filter(user => user.isMember === false);
             let data = nonMembers.filter(obj => obj["name"].toLowerCase().includes(e.target.value.toLowerCase()));
             setResults(data);
         }
     }
 
-    // const deleteMember = (id) => {
-    //     let userList = users.map((user) => {
-    //         if (id === user.id) {
-    //             user.isMember = false;
-    //         }
-    //     });
-    //     setUsers(userList);
+    const deleteMember = (id) => {
+        let userList = users.map((user) => {
+            if (id === user.id) {
+                user.isMember = false;
+            }
+            return user;
+        });
+        setUsers([...userList]);
+    }
 
-    // }
-
-    // const addMember = (id) => {
-
-    // }
+    const addMember = (id) => {
+        let userList = users.map((user) => {
+            if (id === user.id) {
+                user.isMember = true;
+            }
+            return user;
+        });
+        setUsers([...userList]);
+        setResults([]);
+        setValue("");
+    }
 
     return (
         <div className={isShowing ? 'modal show' : 'modal'}>
@@ -61,11 +68,11 @@ const Modal = ({ isShowing, hide }) => {
                     </div>
                     <form>
                         <div className="form_label">
-                            <label for="user">Add Member</label>
+                            <label htmlFor="user">Add Member</label>
                         </div>
                         <div style={{ position: 'relative' }}>
-                            <input type="text" id="user" name="user" placeholder="Enter name or registered email id" onChange={showSuggestions} />
-                            <Suggestions results={results} />
+                            <input type="text" id="user" name="user" value={value} placeholder="Enter name or registered email id" onChange={showSuggestions} />
+                            <Suggestions results={results} addMember={addMember} />
                         </div>
                     </form>
                 </div>
@@ -77,12 +84,14 @@ const Modal = ({ isShowing, hide }) => {
                     <div className="member_section">
                         <span>Members</span>
                         {
-                            members.map((user) => <UserProfile key={`${user.id}-${user.name}`} user={user} id={user.id} />)
+                            users.filter(user => (user.isMember === true))
+                                .map(user => <UserProfile key={`${user.id}-${user.name}`} user={user} id={user.id} deleteMember={deleteMember} />)
                         }
+
                     </div>
                 </div>
                 <div className="model_footer">
-                    <button>Done</button>
+                    <button onClick={hide}>Done</button>
                 </div>
             </div>
         </div>
